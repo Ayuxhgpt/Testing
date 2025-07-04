@@ -3,296 +3,482 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibrahim Memon - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Ibrahim Memon - Software Engineer & Designer</title>
+    <meta name="description" content="A Designer who Judges a book by its cover. Software Engineer at Facebook.">
+    <meta name="author" content="Ibrahim Memon">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Basic Resets and Body Styling */
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', sans-serif; /* Using Inter as specified */
-            color: #ffffff; /* White text by default */
-            background: linear-gradient(135deg, #2b0c48 0%, #0d011a 100%); /* Dark purple/black gradient */
-            min-height: 100vh; /* Full viewport height */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden; /* Prevent scrollbars if content slightly overflows */
             box-sizing: border-box;
+        }
+
+        :root {
+            --background: hsl(240, 15%, 8%);
+            --foreground: hsl(0, 0%, 100%);
+            --muted-foreground: hsl(240, 5%, 65%);
+            --purple-bright: hsl(270, 100%, 75%);
+            --purple-glow: hsl(270, 100%, 85%);
+            --gradient-start: hsl(240, 20%, 6%);
+            --gradient-middle: hsl(260, 40%, 15%);
+            --gradient-end: hsl(280, 60%, 25%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            color: var(--foreground);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, hsla(270, 100%, 85%, 0.3), transparent 70%);
+            pointer-events: none;
         }
 
         .container {
-            width: 100%;
-            max-width: 1200px; /* Max width for content */
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 100vh; /* Ensure container takes full height */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
             position: relative;
+            z-index: 10;
         }
 
-        /* Top Section Styling */
-        .top-section {
+        .main-content {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            padding-top: 50px;
-            position: relative;
-            gap: 20px;
-            flex-grow: 1; /* Allow this section to grow */
-        }
-
-        .hello-text-container {
-            position: absolute;
-            top: 50px; /* Adjusted to match image more closely */
-            left: 200px; /* Adjusted to match image more closely */
-            display: flex;
             align-items: center;
-            gap: 10px;
-            z-index: 10; /* Ensure it's above other elements */
+            justify-content: center;
+            min-height: 100vh;
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .main-content {
+                flex-direction: row;
+                gap: 4rem;
+            }
+        }
+
+        .character-section {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .character-image {
+            width: 16rem;
+            height: 16rem;
+            object-fit: contain;
+            border-radius: 50%;
+            background: linear-gradient(135deg, hsl(240, 15%, 12%), hsl(260, 20%, 20%));
+            padding: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .character-image {
+                width: 20rem;
+                height: 20rem;
+            }
+        }
+
+        .arrow-top-right {
+            position: absolute;
+            top: -2rem;
+            right: -1rem;
+        }
+
+        @media (min-width: 1024px) {
+            .arrow-top-right {
+                top: -3rem;
+                right: -2rem;
+            }
+        }
+
+        .content-section {
+            flex: 1;
+            max-width: 32rem;
+            text-align: center;
+        }
+
+        @media (min-width: 1024px) {
+            .content-section {
+                text-align: left;
+            }
+        }
+
+        .hello-section {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .hello-section {
+                margin-bottom: 3rem;
+            }
         }
 
         .hello-text {
-            font-size: 1.2em;
+            font-size: 1.5rem;
             font-weight: 300;
-            color: #ffffff;
-            white-space: nowrap;
-            border-radius: 8px; /* Rounded corners */
+            margin-bottom: 0.5rem;
         }
 
-        .highlight-name {
-            color: #bb86fc; /* Lighter purple for emphasis */
+        @media (min-width: 1024px) {
+            .hello-text {
+                font-size: 1.875rem;
+            }
+        }
+
+        .name-highlight {
+            color: var(--purple-bright);
+            font-weight: 500;
+        }
+
+        .arrow-hello {
+            position: absolute;
+            right: -1rem;
+            top: 0;
+        }
+
+        @media (min-width: 1024px) {
+            .arrow-hello {
+                right: -2rem;
+                top: 0.5rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .subtitle {
+                font-size: 1.25rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .main-title {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .title-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        @media (min-width: 1024px) {
+            .title-text {
+                font-size: 3.75rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .title-text {
+                font-size: 4.5rem;
+            }
+        }
+
+        .cover-highlight {
+            position: relative;
+            color: var(--purple-bright);
+        }
+
+        .cover-ellipse {
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 1.5rem;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: var(--muted-foreground);
+            font-style: italic;
+            max-width: 28rem;
+        }
+
+        @media (min-width: 1024px) {
+            .tagline {
+                font-size: 1.125rem;
+            }
+        }
+
+        .bottom-section {
+            position: relative;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        @media (min-width: 1024px) {
+            .bottom-section {
+                margin-top: 6rem;
+            }
+        }
+
+        .arrow-curved {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -4rem;
+        }
+
+        @media (min-width: 1024px) {
+            .arrow-curved {
+                top: -5rem;
+            }
+        }
+
+        .engineer-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 1024px) {
+            .engineer-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .engineer-title {
+                font-size: 3.75rem;
+            }
+        }
+
+        .current-role {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1.125rem;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 1024px) {
+            .current-role {
+                font-size: 1.25rem;
+            }
+        }
+
+        .role-text {
+            color: var(--muted-foreground);
+        }
+
+        .facebook-logo {
+            width: 1.5rem;
+            height: 1.5rem;
+            background: #1877f2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .facebook-text {
+            color: #60a5fa;
             font-weight: 500;
         }
 
         .arrow {
-            position: absolute;
-            top: 30px; /* Adjust based on hello-text position */
-            left: 350px; /* Adjust to point towards the memoji */
-            width: 100px; /* Width of the arrow SVG */
-            height: 50px; /* Height of the arrow SVG */
-            transform: rotate(20deg); /* Rotate to match the image */
-            z-index: 5; /* Below hello text but above designer section */
+            stroke: var(--muted-foreground);
+            stroke-width: 2;
+            fill: none;
         }
 
-        .arrow svg {
-            width: 100%;
-            height: 100%;
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
-        .designer-section {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            margin-top: 150px; /* Push down to clear the hello text and arrow */
-            margin-left: 100px; /* Adjust positioning */
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        .character-image {
+            animation: float 6s ease-in-out infinite;
         }
 
-        .memoji {
-            width: 200px; /* Adjust size as needed */
-            height: auto;
-            border-radius: 50%; /* If the image has a transparent background, this might make it look circular */
-            object-fit: cover; /* Ensure image covers the area */
-            box-shadow: 0 0 30px rgba(187, 134, 252, 0.2); /* Subtle glow */
-            border-radius: 12px; /* Rounded corners for the image container */
+        @keyframes glow {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
         }
 
-        .text-content {
-            display: flex;
-            flex-direction: column;
-            border-radius: 8px; /* Rounded corners */
+        .name-highlight {
+            animation: glow 3s ease-in-out infinite;
         }
 
-        .designer-intro {
-            font-size: 1.3em;
-            font-weight: 300;
-            margin-bottom: 5px;
-        }
-
-        .designer-tagline {
-            font-size: 4em; /* Large font size */
-            font-weight: 700;
-            margin: 0;
-            line-height: 1.2;
-            font-family: 'Inter', sans-serif; /* Using Inter for consistency */
-        }
-
-        .highlight-cover {
-            color: #bb86fc; /* Highlight color */
-            border-bottom: 2px solid #bb86fc; /* Underline effect */
-            padding-bottom: 3px; /* Space between text and underline */
-            border-radius: 2px; /* Slight rounded corners for underline */
-        }
-
-        .designer-motto {
-            font-size: 1em;
-            font-weight: 300;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-
-        /* Bottom Section Styling */
-        .bottom-section {
-            align-self: flex-start; /* Align to the left */
-            margin-bottom: 50px; /* Space from the bottom */
-            margin-left: 100px; /* Align with the designer section */
-            border-radius: 8px; /* Rounded corners */
-        }
-
-        .engineer-title {
-            font-size: 3em; /* Large font size */
-            font-weight: 600;
-            margin-bottom: 10px;
-            position: relative;
-            display: inline-block; /* To make the blinking cursor work correctly */
-        }
-
-        .blinking-cursor {
-            font-weight: 400;
-            animation: blink-caret .75s step-end infinite;
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #ffffff; }
-        }
-
-        .engineer-detail {
-            font-size: 1.2em;
-            font-weight: 300;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .facebook-logo {
-            height: 1.2em; /* Adjust size to align with text */
-            width: auto;
-            vertical-align: middle; /* Align with text baseline */
-            border-radius: 4px; /* Rounded corners for the logo */
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            .hello-text-container {
-                left: 100px;
-            }
-            .arrow {
-                left: 250px;
-            }
-            .designer-section, .bottom-section {
-                margin-left: 50px;
-            }
-            .designer-tagline {
-                font-size: 3.5em;
-            }
-            .engineer-title {
-                font-size: 2.5em;
-            }
-        }
-
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 1rem;
             }
-            .top-section {
-                align-items: center;
-                padding-top: 20px;
+            
+            .main-content {
+                gap: 1.5rem;
             }
-            .hello-text-container {
-                position: static; /* Reset positioning for smaller screens */
-                margin-bottom: 20px;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+            
+            .hello-section {
+                margin-bottom: 1.5rem;
             }
-            .arrow {
-                position: static;
-                transform: none;
-                margin-top: 10px;
-                width: 80px;
-                height: 40px;
-            }
-            .designer-section {
-                flex-direction: column;
-                text-align: center;
-                margin-top: 50px;
-                margin-left: 0;
-                gap: 20px;
-            }
-            .memoji {
-                width: 150px;
-            }
-            .designer-tagline {
-                font-size: 2.5em;
-            }
-            .designer-motto {
-                font-size: 0.9em;
-            }
+            
             .bottom-section {
-                align-self: center;
-                text-align: center;
-                margin-left: 0;
-                margin-top: 40px; /* Add some space from the top section */
-            }
-            .engineer-title {
-                font-size: 2em;
-            }
-            .engineer-detail {
-                font-size: 1em;
-                flex-direction: column; /* Stack logo and text if needed */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .designer-tagline {
-                font-size: 2em;
-            }
-            .engineer-title {
-                font-size: 1.5em;
-            }
-            .hello-text {
-                font-size: 1em;
-            }
-            .designer-intro, .engineer-detail {
-                font-size: 0.9em;
+                margin-top: 3rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="top-section">
-            <div class="hello-text-container">
-                <p class="hello-text">Hello! I Am <span class="highlight-name">Ibrahim Memon</span></p>
-                <div class="arrow">
-                    <!-- SVG for the arrow to ensure exact curve -->
-                    <svg viewBox="0 0 100 50" preserveAspectRatio="none">
-                        <path d="M5 45 C 20 5, 80 5, 95 45" stroke="#FFFFFF" fill="none" stroke-width="2"/>
-                        <polygon points="95,45 89,42 92,45 89,48" fill="#FFFFFF" /> <!-- Arrowhead -->
+        <div class="main-content">
+            <!-- Character Section -->
+            <div class="character-section">
+                <!-- Character placeholder - replace src with your character image -->
+                <div class="character-image" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, hsl(240, 15%, 12%), hsl(260, 20%, 20%)); border: 2px solid var(--purple-bright);">
+                    <div style="text-align: center; color: var(--muted-foreground);">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">👨‍💻</div>
+                        <div style="font-size: 0.875rem;">Character<br>Image</div>
+                    </div>
+                </div>
+                
+                <!-- Arrow pointing to character -->
+                <div class="arrow-top-right">
+                    <svg width="80" height="48" viewBox="0 0 100 60" class="arrow">
+                        <path d="M90 10 L20 50" stroke-linecap="round" />
+                        <path d="M30 45 L20 50 L25 40" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </div>
             </div>
-            <div class="designer-section">
-                <!-- Placeholder for Memoji image -->
-                <img src="https://placehold.co/200x200/553c9a/ffffff?text=Memoji" alt="Ibrahim Memon Memoji with Laptop" class="memoji" onerror="this.onerror=null;this.src='https://placehold.co/200x200/553c9a/ffffff?text=Memoji';">
-                <div class="text-content">
-                    <p class="designer-intro">A Designer who</p>
-                    <h1 class="designer-tagline">Judges a book by its <span class="highlight-cover">cover...</span></h1>
-                    <p class="designer-motto">Because if the cover does not impress you what else can?</p>
+
+            <!-- Content Section -->
+            <div class="content-section">
+                <!-- Hello Section -->
+                <div class="hello-section">
+                    <h1 class="hello-text">
+                        Hello! I Am <span class="name-highlight">Ibrahim Memon</span>
+                    </h1>
+                    
+                    <!-- Arrow pointing to name -->
+                    <div class="arrow-hello">
+                        <svg width="64" height="32" viewBox="0 0 100 60" class="arrow">
+                            <path d="M10 50 L80 10" stroke-linecap="round" />
+                            <path d="M70 15 L80 10 L75 20" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div>
+                    <p class="subtitle">A Designer who</p>
+                    
+                    <div class="main-title">
+                        <h2 class="title-text">
+                            Judges a book<br>
+                            by its <span class="cover-highlight">
+                                cover
+                                <svg class="cover-ellipse" viewBox="0 0 200 20" fill="none">
+                                    <ellipse cx="100" cy="10" rx="90" ry="8" stroke="var(--purple-bright)" stroke-width="2" fill="none" />
+                                </svg>
+                            </span>...
+                        </h2>
+                    </div>
+                    
+                    <p class="tagline">
+                        Because if the cover does not impress you what else can?
+                    </p>
                 </div>
             </div>
         </div>
 
+        <!-- Bottom Section -->
         <div class="bottom-section">
-            <h2 class="engineer-title">I'm a Software Engineer.<span class="blinking-cursor">|</span></h2>
-            <p class="engineer-detail">Currently, I'm a Software Engineer at <!-- Placeholder for Facebook logo -->
-                <img src="https://placehold.co/24x24/1877F2/ffffff?text=FB" alt="Facebook Logo" class="facebook-logo" onerror="this.onerror=null;this.src='https://placehold.co/24x24/1877F2/ffffff?text=FB';"> Facebook,</p>
+            <!-- Curved Arrow -->
+            <div class="arrow-curved">
+                <svg width="96" height="64" viewBox="0 0 120 80" class="arrow">
+                    <path d="M10 20 Q50 10 100 60" stroke-linecap="round" />
+                    <path d="M90 55 L100 60 L95 70" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            
+            <h3 class="engineer-title">I'm a Software Engineer.</h3>
+            
+            <div class="current-role">
+                <span class="role-text">Currently, I'm a Software Engineer at</span>
+                <div class="facebook-logo">f</div>
+                <span class="facebook-text">Facebook</span>
+                <span class="role-text">,</span>
+            </div>
         </div>
     </div>
+
+    <script>
+        // Add smooth scrolling and any interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to interactive elements
+            const nameHighlight = document.querySelector('.name-highlight');
+            const facebookLogo = document.querySelector('.facebook-logo');
+            
+            // Enhance name highlight on hover
+            if (nameHighlight) {
+                nameHighlight.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                nameHighlight.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            }
+            
+            // Add click effect to Facebook logo
+            if (facebookLogo) {
+                facebookLogo.addEventListener('click', function() {
+                    window.open('https://facebook.com', '_blank');
+                });
+                
+                facebookLogo.style.cursor = 'pointer';
+                
+                facebookLogo.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1)';
+                    this.style.transition = 'transform 0.2s ease';
+                });
+                
+                facebookLogo.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            }
+            
+            // Add parallax effect to arrows on scroll
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const arrows = document.querySelectorAll('.arrow');
+                
+                arrows.forEach((arrow, index) => {
+                    const speed = (index + 1) * 0.5;
+                    arrow.style.transform = `translateY(${scrolled * speed * 0.1}px)`;
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
