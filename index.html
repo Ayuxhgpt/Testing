@@ -1,165 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibrahim Memon - Software Engineer & Designer</title>
-    <meta name="description" content="A Designer who Judges a book by its cover. Software Engineer at Facebook.">
-    <meta name="author" content="Ibrahim Memon">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ... Your existing CSS ... */
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ibrahim Memon - Software Engineer & Designer</title>
+  <meta name="description" content="A Designer who Judges a book by its cover. Software Engineer at Facebook.">
+  <meta name="author" content="Ibrahim Memon">
 
-        /* Add a style to hide the audio player if you don't want it visible */
-        .hidden-audio {
-            display: none;
-        }
-    </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      margin: 0;
+      background: #0f0f0f;
+      color: white;
+    }
+
+    .container {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .main-content {
+      font-size: 24px;
+      margin-top: 50px;
+    }
+
+    .hidden-audio {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="main-content">
-            </div>
+  <div class="container">
+    <div class="main-content">
+      <h1 class="name-highlight">Ibrahim Memon</h1>
+      <p>Software Engineer @ Facebook</p>
+      <p>A designer who judges a book by its cover.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+           width="40"
+           class="facebook-logo"
+           alt="Facebook Logo" />
+    </div>
+  </div>
 
-        </div>
+  <audio id="background-music" class="hidden-audio" autoplay muted loop>
+    Your browser does not support the audio element.
+  </audio>
 
-    <audio id="background-music" class="hidden-audio" autoplay muted>
-        Your browser does not support the audio element.
-    </audio>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const audioPlayer = document.getElementById('background-music');
+      const playlist = [
+        'https://raw.githubusercontent.com/Ayuxhgpt/Testing/main/Marco%20Teaser%20Theme%20%20Unni%20Mukundan%20%20Shareef%20Muhammed%20%20Haneef%20Adeni%20%20Ravi%20Basrur.mp3',
+        'https://raw.githubusercontent.com/Ayuxhgpt/Testing/main/Marco%20-%20Tony\'s%20Mayhem%20Theme%20%20Unni%20Mukundan%20%20Shareef%20Muhammed%20%20Haneef%20Adeni%20%20Ravi%20Basrur.mp3'
+      ];
 
-    <script>
-        // Your existing JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add hover effects to interactive elements
-            const nameHighlight = document.querySelector('.name-highlight');
-            const facebookLogo = document.querySelector('.facebook-logo');
-            
-            if (nameHighlight) {
-                nameHighlight.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.05)';
-                    this.style.transition = 'transform 0.3s ease';
-                });
-                nameHighlight.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1)';
-                });
-            }
-            
-            if (facebookLogo) {
-                facebookLogo.addEventListener('click', function() {
-                    window.open('https://facebook.com', '_blank');
-                });
-                facebookLogo.style.cursor = 'pointer';
-                facebookLogo.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.1)';
-                    this.style.transition = 'transform 0.2s ease';
-                });
-                facebookLogo.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1)';
-                });
-            }
-            
-            window.addEventListener('scroll', function() {
-                const scrolled = window.pageYOffset;
-                const arrows = document.querySelectorAll('.arrow');
-                arrows.forEach((arrow, index) => {
-                    const speed = (index + 1) * 0.5;
-                    arrow.style.transform = `translateY(${scrolled * speed * 0.1}px)`;
-                });
-            });
+      let currentSongIndex = 0;
 
-            // --- New JavaScript for sequential audio playlist ---
-            const audioPlayer = document.getElementById('background-music');
-            const playlist = [
-                'https://raw.githubusercontent.com/Ayuxhgpt/Testing/main/Marco%20Teaser%20Theme%20%20Unni%20Mukundan%20%20Shareef%20Muhammed%20%20Haneef%20Adeni%20%20Ravi%20Basrur.mp3',
-                'https://raw.githubusercontent.com/Ayuxhgpt/Testing/main/Marco%20-%20Tony\'s%20Mayhem%20Theme%20%20Unni%20Mukundan%20%20Shareef%20Muhammed%20%20Haneef%20Adeni%20%20Ravi%20Basrur.mp3'
-            ];
-            let currentSongIndex = 0;
-
-            function playNextSong() {
-                currentSongIndex = (currentSongIndex + 1) % playlist.length; // Cycle through songs
-                audioPlayer.src = playlist[currentSongIndex];
-                audioPlayer.load(); // Load the new source
-                audioPlayer.play().catch(error => {
-                    console.log('Autoplay was prevented (likely due to mute status). User interaction needed to play:', error);
-                    // You might want to show an "Unmute" button here
-                });
-            }
-
-            // Listen for when a song ends
-            audioPlayer.addEventListener('ended', playNextSong);
-
-            // Initial song load (and attempt to autoplay muted)
-            if (audioPlayer) {
-                audioPlayer.src = playlist[currentSongIndex];
-                audioPlayer.load();
-                audioPlayer.play().catch(error => {
-                    console.log('Initial autoplay was prevented (likely due to mute status). User interaction needed to play:', error);
-                    // Provide a way for the user to initiate playback if it fails
-                    // For example, add a button that calls audioPlayer.play() and audioPlayer.muted = false;
-                });
-            }
-
-            // Optional: Add a simple unmute button if autoplay fails
-            // This is crucial for browser policies
-            const unmuteButton = document.createElement('button');
-            unmuteButton.textContent = '🎶 Play Music';
-            unmuteButton.style.position = 'fixed';
-            unmuteButton.style.bottom = '20px';
-            unmuteButton.style.right = '20px';
-            unmuteButton.style.padding = '10px 15px';
-            unmuteButton.style.background = 'var(--purple-bright)';
-            unmuteButton.style.color = 'white';
-            unmuteButton.style.border = 'none';
-            unmuteButton.style.borderRadius = '5px';
-            unmuteButton.style.cursor = 'pointer';
-            unmuteButton.style.zIndex = '1000';
-            unmuteButton.style.display = 'none'; // Initially hidden
-
-            unmuteButton.addEventListener('click', () => {
-                if (audioPlayer.muted) {
-                    audioPlayer.muted = false;
-                    audioPlayer.play();
-                    unmuteButton.style.display = 'none'; // Hide button once unmuted
-                }
-            });
-
-            // Show unmute button if autoplay fails
-            audioPlayer.addEventListener('play', () => {
-                if (!audioPlayer.muted) {
-                    unmuteButton.style.display = 'none';
-                }
-            });
-            audioPlayer.addEventListener('pause', () => {
-                if (!audioPlayer.muted) { // Only show if paused AND not muted
-                     unmuteButton.style.display = 'block';
-                     unmuteButton.textContent = '▶️ Resume Music';
-                }
-            });
-            audioPlayer.addEventListener('volumechange', () => {
-                if (audioPlayer.muted) {
-                    unmuteButton.style.display = 'block';
-                    unmuteButton.textContent = '🎶 Play Music (Click to Unmute)';
-                } else {
-                    unmuteButton.style.display = 'none';
-                }
-            });
-
-            // Append the button to the body
-            document.body.appendChild(unmuteButton);
-
-            // Initial check to show unmute button if audio starts muted but wants to be unmuted
-            // This handles cases where play() is called, but browser policy prevents sound
-            setTimeout(() => {
-                if (audioPlayer.paused && audioPlayer.muted) {
-                     unmuteButton.style.display = 'block';
-                     unmuteButton.textContent = '🎶 Play Music (Click to Unmute)';
-                }
-            }, 1000); // Give a little time for initial autoplay attempt
+      function playNextSong() {
+        currentSongIndex = (currentSongIndex + 1) % playlist.length;
+        audioPlayer.src = playlist[currentSongIndex];
+        audioPlayer.load();
+        audioPlayer.play().catch(error => {
+          console.log('Autoplay blocked:', error);
         });
-    </script>
+      }
+
+      audioPlayer.src = playlist[currentSongIndex];
+      audioPlayer.load();
+      audioPlayer.play().catch(error => {
+        console.log('Initial autoplay blocked:', error);
+      });
+
+      audioPlayer.addEventListener('ended', playNextSong);
+
+      const unmuteButton = document.createElement('button');
+      unmuteButton.textContent = '🎶 Play Music';
+      unmuteButton.style.position = 'fixed';
+      unmuteButton.style.bottom = '20px';
+      unmuteButton.style.right = '20px';
+      unmuteButton.style.padding = '10px 15px';
+      unmuteButton.style.background = '#7b2cbf';
+      unmuteButton.style.color = 'white';
+      unmuteButton.style.border = 'none';
+      unmuteButton.style.borderRadius = '5px';
+      unmuteButton.style.cursor = 'pointer';
+      unmuteButton.style.zIndex = '1000';
+      unmuteButton.style.display = 'none';
+
+      unmuteButton.addEventListener('click', () => {
+        audioPlayer.muted = false;
+        audioPlayer.play();
+        unmuteButton.style.display = 'none';
+      });
+
+      document.body.appendChild(unmuteButton);
+
+      setTimeout(() => {
+        if (audioPlayer.paused || audioPlayer.muted) {
+          unmuteButton.style.display = 'block';
+        }
+      }, 1000);
+
+      // Hover effects
+      const nameHighlight = document.querySelector('.name-highlight');
+      const facebookLogo = document.querySelector('.facebook-logo');
+
+      if (nameHighlight) {
+        nameHighlight.addEventListener('mouseenter', function () {
+          this.style.transform = 'scale(1.05)';
+          this.style.transition = 'transform 0.3s ease';
+        });
+        nameHighlight.addEventListener('mouseleave', function () {
+          this.style.transform = 'scale(1)';
+        });
+      }
+
+      if (facebookLogo) {
+        facebookLogo.addEventListener('click', function () {
+          window.open('https://facebook.com', '_blank');
+        });
+        facebookLogo.style.cursor = 'pointer';
+        facebookLogo.addEventListener('mouseenter', function () {
+          this.style.transform = 'scale(1.1)';
+          this.style.transition = 'transform 0.2s ease';
+        });
+        facebookLogo.addEventListener('mouseleave', function () {
+          this.style.transform = 'scale(1)';
+        });
+      }
+    });
+  </script>
 </body>
 </html>
