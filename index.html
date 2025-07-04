@@ -7,477 +7,158 @@
     <meta name="description" content="A Designer who Judges a book by its cover. Software Engineer at Facebook.">
     <meta name="author" content="Ibrahim Memon">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* ... Your existing CSS ... */
 
-        :root {
-            --background: hsl(240, 15%, 8%);
-            --foreground: hsl(0, 0%, 100%);
-            --muted-foreground: hsl(240, 5%, 65%);
-            --purple-bright: hsl(270, 100%, 75%);
-            --purple-glow: hsl(270, 100%, 85%);
-            --gradient-start: hsl(240, 20%, 6%);
-            --gradient-middle: hsl(260, 40%, 15%);
-            --gradient-end: hsl(280, 60%, 25%);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
-            color: var(--foreground);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at center, hsla(270, 100%, 85%, 0.3), transparent 70%);
-            pointer-events: none;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            gap: 2rem;
-        }
-
-        @media (min-width: 1024px) {
-            .main-content {
-                flex-direction: row;
-                gap: 4rem;
-            }
-        }
-
-        .character-section {
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .character-image {
-            width: 16rem;
-            height: 16rem;
-            object-fit: contain;
-            border-radius: 50%;
-            background: linear-gradient(135deg, hsl(240, 15%, 12%), hsl(260, 20%, 20%));
-            padding: 2rem;
-        }
-
-        @media (min-width: 1024px) {
-            .character-image {
-                width: 20rem;
-                height: 20rem;
-            }
-        }
-
-        .arrow-top-right {
-            position: absolute;
-            top: -2rem;
-            right: -1rem;
-        }
-
-        @media (min-width: 1024px) {
-            .arrow-top-right {
-                top: -3rem;
-                right: -2rem;
-            }
-        }
-
-        .content-section {
-            flex: 1;
-            max-width: 32rem;
-            text-align: center;
-        }
-
-        @media (min-width: 1024px) {
-            .content-section {
-                text-align: left;
-            }
-        }
-
-        .hello-section {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 1024px) {
-            .hello-section {
-                margin-bottom: 3rem;
-            }
-        }
-
-        .hello-text {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-        }
-
-        @media (min-width: 1024px) {
-            .hello-text {
-                font-size: 1.875rem;
-            }
-        }
-
-        .name-highlight {
-            color: var(--purple-bright);
-            font-weight: 500;
-        }
-
-        .arrow-hello {
-            position: absolute;
-            right: -1rem;
-            top: 0;
-        }
-
-        @media (min-width: 1024px) {
-            .arrow-hello {
-                right: -2rem;
-                top: 0.5rem;
-            }
-        }
-
-        .subtitle {
-            font-size: 1.125rem;
-            color: var(--muted-foreground);
-            margin-bottom: 1.5rem;
-        }
-
-        @media (min-width: 1024px) {
-            .subtitle {
-                font-size: 1.25rem;
-                margin-bottom: 2rem;
-            }
-        }
-
-        .main-title {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-
-        .title-text {
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-        }
-
-        @media (min-width: 1024px) {
-            .title-text {
-                font-size: 3.75rem;
-            }
-        }
-
-        @media (min-width: 1280px) {
-            .title-text {
-                font-size: 4.5rem;
-            }
-        }
-
-        .cover-highlight {
-            position: relative;
-            color: var(--purple-bright);
-        }
-
-        .cover-ellipse {
-            position: absolute;
-            bottom: -0.5rem;
-            left: 0;
-            width: 100%;
-            height: 1.5rem;
-        }
-
-        .tagline {
-            font-size: 1rem;
-            color: var(--muted-foreground);
-            font-style: italic;
-            max-width: 28rem;
-        }
-
-        @media (min-width: 1024px) {
-            .tagline {
-                font-size: 1.125rem;
-            }
-        }
-
-        .bottom-section {
-            position: relative;
-            margin-top: 4rem;
-            text-align: center;
-        }
-
-        @media (min-width: 1024px) {
-            .bottom-section {
-                margin-top: 6rem;
-            }
-        }
-
-        .arrow-curved {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: -4rem;
-        }
-
-        @media (min-width: 1024px) {
-            .arrow-curved {
-                top: -5rem;
-            }
-        }
-
-        .engineer-title {
-            font-size: 1.875rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 1024px) {
-            .engineer-title {
-                font-size: 3rem;
-            }
-        }
-
-        @media (min-width: 1280px) {
-            .engineer-title {
-                font-size: 3.75rem;
-            }
-        }
-
-        .current-role {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-size: 1.125rem;
-            flex-wrap: wrap;
-        }
-
-        @media (min-width: 1024px) {
-            .current-role {
-                font-size: 1.25rem;
-            }
-        }
-
-        .role-text {
-            color: var(--muted-foreground);
-        }
-
-        .facebook-logo {
-            width: 1.5rem;
-            height: 1.5rem;
-            background: #1877f2;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 0.875rem;
-        }
-
-        .facebook-text {
-            color: #60a5fa;
-            font-weight: 500;
-        }
-
-        .arrow {
-            stroke: var(--muted-foreground);
-            stroke-width: 2;
-            fill: none;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .character-image {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
-        }
-
-        .name-highlight {
-            animation: glow 3s ease-in-out infinite;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .main-content {
-                gap: 1.5rem;
-            }
-            
-            .hello-section {
-                margin-bottom: 1.5rem;
-            }
-            
-            .bottom-section {
-                margin-top: 3rem;
-            }
+        /* Add a style to hide the audio player if you don't want it visible */
+        .hidden-audio {
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="main-content">
-            <!-- Character Section -->
-            <div class="character-section">
-                <!-- Character placeholder - replace src with your character image -->
-                <div class="character-image" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, hsl(240, 15%, 12%), hsl(260, 20%, 20%)); border: 2px solid var(--purple-bright);">
-                    <div style="text-align: center; color: var(--muted-foreground);">
-                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">👨‍💻</div>
-                        <div style="font-size: 0.875rem;">Character<br>Image</div>
-                    </div>
-                </div>
-                
-                <!-- Arrow pointing to character -->
-                <div class="arrow-top-right">
-                    <svg width="80" height="48" viewBox="0 0 100 60" class="arrow">
-                        <path d="M90 10 L20 50" stroke-linecap="round" />
-                        <path d="M30 45 L20 50 L25 40" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </div>
             </div>
 
-            <!-- Content Section -->
-            <div class="content-section">
-                <!-- Hello Section -->
-                <div class="hello-section">
-                    <h1 class="hello-text">
-                        Hello! I Am <span class="name-highlight">Ibrahim Memon</span>
-                    </h1>
-                    
-                    <!-- Arrow pointing to name -->
-                    <div class="arrow-hello">
-                        <svg width="64" height="32" viewBox="0 0 100 60" class="arrow">
-                            <path d="M10 50 L80 10" stroke-linecap="round" />
-                            <path d="M70 15 L80 10 L75 20" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- Main Content -->
-                <div>
-                    <p class="subtitle">A Designer who</p>
-                    
-                    <div class="main-title">
-                        <h2 class="title-text">
-                            Judges a book<br>
-                            by its <span class="cover-highlight">
-                                cover
-                                <svg class="cover-ellipse" viewBox="0 0 200 20" fill="none">
-                                    <ellipse cx="100" cy="10" rx="90" ry="8" stroke="var(--purple-bright)" stroke-width="2" fill="none" />
-                                </svg>
-                            </span>...
-                        </h2>
-                    </div>
-                    
-                    <p class="tagline">
-                        Because if the cover does not impress you what else can?
-                    </p>
-                </div>
-            </div>
         </div>
 
-        <!-- Bottom Section -->
-        <div class="bottom-section">
-            <!-- Curved Arrow -->
-            <div class="arrow-curved">
-                <svg width="96" height="64" viewBox="0 0 120 80" class="arrow">
-                    <path d="M10 20 Q50 10 100 60" stroke-linecap="round" />
-                    <path d="M90 55 L100 60 L95 70" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </div>
-            
-            <h3 class="engineer-title">I'm a Software Engineer.</h3>
-            
-            <div class="current-role">
-                <span class="role-text">Currently, I'm a Software Engineer at</span>
-                <div class="facebook-logo">f</div>
-                <span class="facebook-text">Facebook</span>
-                <span class="role-text">,</span>
-            </div>
-        </div>
-    </div>
+    <audio id="background-music" class="hidden-audio" autoplay muted>
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
-        // Add smooth scrolling and any interactive features
+        // Your existing JavaScript
         document.addEventListener('DOMContentLoaded', function() {
             // Add hover effects to interactive elements
             const nameHighlight = document.querySelector('.name-highlight');
             const facebookLogo = document.querySelector('.facebook-logo');
             
-            // Enhance name highlight on hover
             if (nameHighlight) {
                 nameHighlight.addEventListener('mouseenter', function() {
                     this.style.transform = 'scale(1.05)';
                     this.style.transition = 'transform 0.3s ease';
                 });
-                
                 nameHighlight.addEventListener('mouseleave', function() {
                     this.style.transform = 'scale(1)';
                 });
             }
             
-            // Add click effect to Facebook logo
             if (facebookLogo) {
                 facebookLogo.addEventListener('click', function() {
                     window.open('https://facebook.com', '_blank');
                 });
-                
                 facebookLogo.style.cursor = 'pointer';
-                
                 facebookLogo.addEventListener('mouseenter', function() {
                     this.style.transform = 'scale(1.1)';
                     this.style.transition = 'transform 0.2s ease';
                 });
-                
                 facebookLogo.addEventListener('mouseleave', function() {
                     this.style.transform = 'scale(1)';
                 });
             }
             
-            // Add parallax effect to arrows on scroll
             window.addEventListener('scroll', function() {
                 const scrolled = window.pageYOffset;
                 const arrows = document.querySelectorAll('.arrow');
-                
                 arrows.forEach((arrow, index) => {
                     const speed = (index + 1) * 0.5;
                     arrow.style.transform = `translateY(${scrolled * speed * 0.1}px)`;
                 });
             });
+
+            // --- New JavaScript for sequential audio playlist ---
+            const audioPlayer = document.getElementById('background-music');
+            const playlist = [
+                'https://raw.githubusercontent.com/Ayuxhgpt/Testing/main/Marco%20Teaser%20Theme%20%20Unni%20Mukundan%20%20Shareef%20Muhammed%20%20Haneef%20Adeni%20%20Ravi%20Basrur.mp3',
+                'https://raw.githubusercontent.com/Ayuxhgpt/Testing/main/Marco%20-%20Tony\'s%20Mayhem%20Theme%20%20Unni%20Mukundan%20%20Shareef%20Muhammed%20%20Haneef%20Adeni%20%20Ravi%20Basrur.mp3'
+            ];
+            let currentSongIndex = 0;
+
+            function playNextSong() {
+                currentSongIndex = (currentSongIndex + 1) % playlist.length; // Cycle through songs
+                audioPlayer.src = playlist[currentSongIndex];
+                audioPlayer.load(); // Load the new source
+                audioPlayer.play().catch(error => {
+                    console.log('Autoplay was prevented (likely due to mute status). User interaction needed to play:', error);
+                    // You might want to show an "Unmute" button here
+                });
+            }
+
+            // Listen for when a song ends
+            audioPlayer.addEventListener('ended', playNextSong);
+
+            // Initial song load (and attempt to autoplay muted)
+            if (audioPlayer) {
+                audioPlayer.src = playlist[currentSongIndex];
+                audioPlayer.load();
+                audioPlayer.play().catch(error => {
+                    console.log('Initial autoplay was prevented (likely due to mute status). User interaction needed to play:', error);
+                    // Provide a way for the user to initiate playback if it fails
+                    // For example, add a button that calls audioPlayer.play() and audioPlayer.muted = false;
+                });
+            }
+
+            // Optional: Add a simple unmute button if autoplay fails
+            // This is crucial for browser policies
+            const unmuteButton = document.createElement('button');
+            unmuteButton.textContent = '🎶 Play Music';
+            unmuteButton.style.position = 'fixed';
+            unmuteButton.style.bottom = '20px';
+            unmuteButton.style.right = '20px';
+            unmuteButton.style.padding = '10px 15px';
+            unmuteButton.style.background = 'var(--purple-bright)';
+            unmuteButton.style.color = 'white';
+            unmuteButton.style.border = 'none';
+            unmuteButton.style.borderRadius = '5px';
+            unmuteButton.style.cursor = 'pointer';
+            unmuteButton.style.zIndex = '1000';
+            unmuteButton.style.display = 'none'; // Initially hidden
+
+            unmuteButton.addEventListener('click', () => {
+                if (audioPlayer.muted) {
+                    audioPlayer.muted = false;
+                    audioPlayer.play();
+                    unmuteButton.style.display = 'none'; // Hide button once unmuted
+                }
+            });
+
+            // Show unmute button if autoplay fails
+            audioPlayer.addEventListener('play', () => {
+                if (!audioPlayer.muted) {
+                    unmuteButton.style.display = 'none';
+                }
+            });
+            audioPlayer.addEventListener('pause', () => {
+                if (!audioPlayer.muted) { // Only show if paused AND not muted
+                     unmuteButton.style.display = 'block';
+                     unmuteButton.textContent = '▶️ Resume Music';
+                }
+            });
+            audioPlayer.addEventListener('volumechange', () => {
+                if (audioPlayer.muted) {
+                    unmuteButton.style.display = 'block';
+                    unmuteButton.textContent = '🎶 Play Music (Click to Unmute)';
+                } else {
+                    unmuteButton.style.display = 'none';
+                }
+            });
+
+            // Append the button to the body
+            document.body.appendChild(unmuteButton);
+
+            // Initial check to show unmute button if audio starts muted but wants to be unmuted
+            // This handles cases where play() is called, but browser policy prevents sound
+            setTimeout(() => {
+                if (audioPlayer.paused && audioPlayer.muted) {
+                     unmuteButton.style.display = 'block';
+                     unmuteButton.textContent = '🎶 Play Music (Click to Unmute)';
+                }
+            }, 1000); // Give a little time for initial autoplay attempt
         });
     </script>
 </body>
