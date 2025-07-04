@@ -1,128 +1,434 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MARCO - Rise of Blood</title>
-  <meta name="description" content="Official Marco Movie Theme Website - Brutal Action. Blood. Power.">
-  <meta name="author" content="Ayu / Marco Studios" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARCO - Unleash the Fury</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0; /* Light text */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
+        /* Custom scrollbar for a darker look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        ::-webkit-scrollbar-track {
+            background: #2d3748; /* Darker track */
+        }
 
-    body {
-      font-family: 'Anton', sans-serif;
-      background-color: #000;
-      color: #e50914;
-      overflow-x: hidden;
-    }
+        ::-webkit-scrollbar-thumb {
+            background: #4a5568; /* Even darker thumb */
+            border-radius: 4px;
+        }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(30, 0, 0, 0.9)),
-        url('https://i.imgur.com/4UD4MKW.jpeg') center/cover no-repeat;
-    }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280; /* Lighter on hover */
+        }
 
-    h1 {
-      font-size: 5rem;
-      letter-spacing: 4px;
-      color: #ff0000;
-      text-shadow: 2px 2px 10px #810000;
-      animation: pulse 2s infinite;
-    }
+        /* Hero section background with parallax effect */
+        .hero-background {
+            background-image: url('https://placehold.co/1920x1080/1a202c/e2e8f0?text=MARCO+Background'); /* Placeholder image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            filter: brightness(0.6); /* Darken the image slightly */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-    p {
-      font-size: 1.5rem;
-      margin-top: 20px;
-      font-family: 'Space Grotesk', sans-serif;
-      color: #f1f1f1;
-    }
+        /* Section fade-in animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
 
-    .music-toggle {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      padding: 12px 20px;
-      background-color: #7b0000;
-      color: white;
-      font-weight: bold;
-      font-size: 14px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 999;
-      transition: background 0.3s;
-    }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    .music-toggle:hover {
-      background-color: #ff1e1e;
-    }
+        /* Button hover effect */
+        .btn-primary {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            background-color: #dc2626; /* Darker red on hover */
+        }
 
-    audio {
-      display: none;
-    }
-  </style>
+        /* Trailer iframe responsiveness */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem; /* rounded-lg */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+            backdrop-filter: blur(5px); /* Blur background */
+            -webkit-backdrop-filter: blur(5px); /* Safari support */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #2d3748; /* Darker modal background */
+            margin: auto;
+            padding: 2rem;
+            border-radius: 0.75rem; /* rounded-lg */
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInScale 0.3s ease-out;
+        }
+
+        .close-button {
+            color: #a0aec0; /* Light gray */
+            position: absolute;
+            top: 0.75rem;
+            right: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #cbd5e0; /* Lighter gray on hover */
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <h1>MARCO</h1>
-    <p>Rise of Blood. Brutality. Vengeance.</p>
-    <p>⚔️ The official Marco cinematic experience ⚔️</p>
-  </div>
+<body class="antialiased">
 
-  <audio id="background-music" autoplay muted loop>
-    <source src="https://raw.githubusercontent.com/Ayuxhgpt/Testing/main/Marco%20Teaser%20Theme%20%20Unni%20Mukundan%20%20Shareef%20Muhammed%20%20Haneef%20Adeni%20%20Ravi%20Basrur.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+    <!-- Modal Structure -->
+    <div id="infoModal" class="modal flex">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h3 class="text-2xl font-bold mb-4 text-red-500">Coming Soon!</h3>
+            <p class="text-lg">The movie links and download options will be available here shortly. Stay tuned for more updates!</p>
+            <button class="mt-6 bg-red-600 text-white py-2 px-6 rounded-lg font-semibold hover:bg-red-700 transition duration-300" onclick="closeModal()">Got It!</button>
+        </div>
+    </div>
 
-  <button class="music-toggle" id="musicToggle">🔊 Turn Off Music</button>
+    <!-- Header -->
+    <header class="bg-gray-900 bg-opacity-80 backdrop-blur-sm fixed w-full z-50 shadow-lg">
+        <nav class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <a href="#" class="text-3xl font-extrabold text-red-600 tracking-wider uppercase mb-4 sm:mb-0">MARCO</a>
+            <ul class="flex flex-wrap justify-center sm:space-x-8 text-lg font-medium">
+                <li><a href="#hero" class="text-gray-300 hover:text-red-500 transition duration-300 px-3 py-2 rounded-md">Home</a></li>
+                <li><a href="#about" class="text-gray-300 hover:text-red-500 transition duration-300 px-3 py-2 rounded-md">About</a></li>
+                <li><a href="#cast" class="text-gray-300 hover:text-red-500 transition duration-300 px-3 py-2 rounded-md">Cast</a></li>
+                <li><a href="#trailers" class="text-gray-300 hover:text-red-500 transition duration-300 px-3 py-2 rounded-md">Trailers</a></li>
+                <li><a href="#music" class="text-gray-300 hover:text-red-500 transition duration-300 px-3 py-2 rounded-md">Music</a></li>
+                <li><a href="#action" class="text-gray-300 hover:text-red-500 transition duration-300 px-3 py-2 rounded-md">Action</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <script>
-    const audio = document.getElementById('background-music');
-    const toggleBtn = document.getElementById('musicToggle');
-    let userInteracted = false;
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+        <div class="hero-background"></div>
+        <div class="relative z-10 p-4 sm:p-8">
+            <h1 class="text-5xl sm:text-7xl md:text-8xl font-black uppercase text-white leading-tight drop-shadow-2xl animate-pulse">MARCO</h1>
+            <p class="text-xl sm:text-2xl md:text-3xl text-gray-200 mt-4 font-light italic drop-shadow-lg">Unleash the Fury. Witness the Carnage.</p>
+            <button onclick="scrollToSection('trailers')" class="mt-8 bg-red-600 text-white py-3 px-8 rounded-lg font-bold text-xl uppercase btn-primary shadow-lg hover:shadow-xl">
+                Watch Trailer
+            </button>
+        </div>
+    </section>
 
-    function tryUnmute() {
-      if (!userInteracted) {
-        audio.muted = false;
-        audio.play();
-        userInteracted = true;
-      }
-    }
+    <!-- About Section -->
+    <section id="about" class="py-16 sm:py-24 bg-gray-800 fade-in-section">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-8 text-red-500">About MARCO</h2>
+            <div class="max-w-3xl mx-auto bg-gray-900 p-6 sm:p-8 rounded-lg shadow-xl border border-gray-700">
+                <p class="text-lg sm:text-xl leading-relaxed text-gray-300 mb-6">
+                    "MARCO" is a high-octane action thriller that plunges into the dark world of vengeance and unimaginable brutality.
+                    Directed by Haneef Adeni, this Malayalam film, also available in Telugu, Tamil, and Kannada, delivers an unflinching look
+                    at the lengths one man will go to protect his family and honor.
+                </p>
+                <p class="text-lg sm:text-xl leading-relaxed text-gray-300 mb-6">
+                    The story follows Marco Jr., a ruthless gangster and the adopted son of the Adattu crime family. After his foster brother, Victor, is brutally murdered, Marco embarks on a relentless and bloody quest for retribution. His journey is fraught with betrayal, loss, and intense confrontations, cementing his reputation as a formidable and feared individual.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-400 text-base sm:text-lg font-semibold mt-8">
+                    <p><strong class="text-red-400">Genre:</strong> Action, Thriller</p>
+                    <p><strong class="text-red-400">Language:</strong> Malayalam (Dubbed in Telugu, Tamil, Kannada)</p>
+                    <p><strong class="text-red-400">Release Date:</strong> December 20, 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Auto-unmute after any interaction
-    ['mousemove', 'scroll', 'click'].forEach(event => {
-      window.addEventListener(event, tryUnmute, { once: true });
-    });
+    <!-- Cast & Crew Section -->
+    <section id="cast" class="py-16 sm:py-24 bg-gray-900 fade-in-section">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-12 text-red-500">The Architects of Chaos</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Unni Mukundan -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 transform hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/200x200/4a5568/e2e8f0?text=Unni+Mukundan" alt="Unni Mukundan" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+                    <h3 class="text-2xl font-bold text-white mb-2">Unni Mukundan</h3>
+                    <p class="text-red-400 text-lg">Marco</p>
+                    <p class="text-gray-400 mt-2">Portrays the titular character, a ruthless gangster on a path of vengeance.</p>
+                </div>
+                <!-- Yukti Thareja -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 transform hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/200x200/4a5568/e2e8f0?text=Yukti+Thareja" alt="Yukti Thareja" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+                    <h3 class="text-2xl font-bold text-white mb-2">Yukti Thareja</h3>
+                    <p class="text-red-400 text-lg">Supporting Role</p>
+                    <p class="text-gray-400 mt-2">Key supporting actress in the high-stakes narrative.</p>
+                </div>
+                <!-- Kabir Duhan Singh -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 transform hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/200x200/4a5568/e2e8f0?text=Kabir+Duhan+Singh" alt="Kabir Duhan Singh" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+                    <h3 class="text-2xl font-bold text-white mb-2">Kabir Duhan Singh</h3>
+                    <p class="text-red-400 text-lg">Supporting Role</p>
+                    <p class="text-gray-400 mt-2">Contributes to the intense confrontations within the film.</p>
+                </div>
+                <!-- Haneef Adeni (Director) -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 transform hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/200x200/4a5568/e2e8f0?text=Haneef+Adeni" alt="Haneef Adeni" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+                    <h3 class="text-2xl font-bold text-white mb-2">Haneef Adeni</h3>
+                    <p class="text-red-400 text-lg">Director</p>
+                    <p class="text-gray-400 mt-2">The visionary behind the film's gritty narrative and brutal action sequences.</p>
+                </div>
+                <!-- Shareef Muhammed (Producer) -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 transform hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/200x200/4a5568/e2e8f0?text=Shareef+Muhammed" alt="Shareef Muhammed" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+                    <h3 class="text-2xl font-bold text-white mb-2">Shareef Muhammed</h3>
+                    <p class="text-red-400 text-lg">Producer</p>
+                    <p class="text-gray-400 mt-2">The producer who brought the intense world of MARCO to life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    toggleBtn.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-        toggleBtn.textContent = '🔊 Turn Off Music';
-      } else {
-        audio.pause();
-        toggleBtn.textContent = '🔇 Turn On Music';
-      }
-    });
-  </script>
+    <!-- Trailers Section -->
+    <section id="trailers" class="py-16 sm:py-24 bg-gray-800 fade-in-section">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-12 text-red-500">Experience the Intensity</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Trailer 1 -->
+                <div class="bg-gray-900 p-4 rounded-lg shadow-xl border border-gray-700">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Official Teaser</h3>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/AdwGOloQAs?autoplay=0&mute=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p class="text-gray-400 mt-4">Get a glimpse into the raw power and dark themes of MARCO.</p>
+                </div>
+                <!-- Trailer 2 -->
+                <div class="bg-gray-900 p-4 rounded-lg shadow-xl border border-gray-700">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Official Trailer</h3>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/riUmgQ92GcM?autoplay=0&mute=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p class="text-gray-400 mt-4">Dive deeper into the action and narrative with the full trailer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="py-16 sm:py-24 bg-gray-900 fade-in-section">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-12 text-red-500">The Soundtrack of Vengeance</h2>
+            <div class="max-w-4xl mx-auto bg-gray-800 p-6 sm:p-8 rounded-lg shadow-xl border border-gray-700">
+                <p class="text-lg sm:text-xl leading-relaxed text-gray-300 mb-6">
+                    The powerful and intense score for "MARCO" is composed by <strong class="text-red-400">Ravi Basrur</strong>, known for his impactful work in high-octane films. His music perfectly complements the brutal action and emotional depth of the movie.
+                </p>
+                <h3 class="text-2xl font-bold text-white mb-4">Featured Tracks:</h3>
+                <ul class="list-disc list-inside text-left text-lg sm:text-xl text-gray-300 mb-6 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <li>Blood</li>
+                    <li>Marco Theme 1</li>
+                    <li>Asuran</li>
+                    <li>Marpapa</li>
+                    <li>Family</li>
+                    <li>The Blind and The Killer</li>
+                    <li>The Last Ride</li>
+                    <li>Marco's Katana</li>
+                </ul>
+                <a href="https://www.youtube.com/watch?v=Lc8fzvtkzWc" target="_blank" rel="noopener noreferrer"
+                   class="inline-block bg-red-600 text-white py-3 px-8 rounded-lg font-bold text-xl uppercase btn-primary shadow-lg hover:shadow-xl">
+                    Listen to the Full OST Jukebox
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brutal Action Section -->
+    <section id="action" class="py-16 sm:py-24 bg-gray-800 fade-in-section">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-12 text-red-500">Unleashed Brutality</h2>
+            <div class="max-w-4xl mx-auto bg-gray-900 p-6 sm:p-8 rounded-lg shadow-xl border border-gray-700">
+                <p class="text-lg sm:text-xl leading-relaxed text-gray-300 mb-6">
+                    "MARCO" redefines action cinema with its raw, unflinching portrayal of violence. The film has garnered attention for its intensely choreographed fight sequences and visceral depictions of combat, drawing comparisons to international benchmarks like <strong class="text-red-400">John Wick</strong> and <strong class="text-red-400">Sin City</strong>.
+                </p>
+                <p class="text-lg sm:text-xl leading-relaxed text-gray-300 mb-6">
+                    Prepare for a cinematic experience where every punch, every cut, and every explosion is felt. A standout sequence, reminiscent of the iconic corridor fight from Old Boy, showcases Marco's relentless pursuit of justice through a gauntlet of adversaries. This is not just action; it's a brutal ballet of vengeance.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                    <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Brutal+Action+Scene+1" alt="Brutal Action Scene 1" class="rounded-lg shadow-md w-full h-auto object-cover transform hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Brutal+Action+Scene+2" alt="Brutal Action Scene 2" class="rounded-lg shadow-md w-full h-auto object-cover transform hover:scale-105 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action for Movie Links -->
+    <section id="watch-now" class="py-16 sm:py-24 bg-gray-900 text-center fade-in-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-8 text-red-500">Don't Just Watch. Experience.</h2>
+            <p class="text-xl sm:text-2xl text-gray-300 mb-10">
+                Be among the first to witness the epic saga of MARCO.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <button onclick="showModal()" class="bg-red-600 text-white py-3 px-8 rounded-lg font-bold text-xl uppercase btn-primary shadow-lg hover:shadow-xl w-full sm:w-auto">
+                    Watch Now
+                </button>
+                <button onclick="showModal()" class="bg-gray-700 text-white py-3 px-8 rounded-lg font-bold text-xl uppercase btn-primary shadow-lg hover:shadow-xl w-full sm:w-auto">
+                    Download Movie
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8 text-center text-gray-500 text-sm">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 MARCO Movie. All rights reserved.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#" class="hover:text-red-500 transition duration-300">Facebook</a>
+                <a href="#" class="hover:text-red-500 transition duration-300">Twitter</a>
+                <a href="#" class="hover:text-red-500 transition duration-300">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Function to scroll to a specific section
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Intersection Observer for fade-in sections
+        const fadeInSections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, observerOptions);
+
+        fadeInSections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Modal functionality
+        const infoModal = document.getElementById('infoModal');
+
+        function showModal() {
+            infoModal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            infoModal.style.display = 'none';
+        }
+
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target == infoModal) {
+                closeModal();
+            }
+        }
+
+        // Initial check for hero section visibility to trigger pulse animation
+        const heroSection = document.getElementById('hero');
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const title = entry.target.querySelector('.animate-pulse');
+                if (entry.isIntersecting) {
+                    title.style.animationPlayState = 'running';
+                } else {
+                    title.style.animationPlayState = 'paused';
+                }
+            });
+        }, { threshold: 0.5 }); // Trigger when 50% of the hero section is visible
+
+        heroObserver.observe(heroSection);
+
+    </script>
 </body>
 </html>
+
