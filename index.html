@@ -1,105 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ayush Gupta | Frontend Developer</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0d001a;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-    }
+      background-color: #14002e;
+      color: white;
+      overflow-x: hidden;
+    }.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  position: relative;
+}
 
-    .avatar {
-      margin-top: 30px;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: url('AVATAR_LINK_HERE') center/cover no-repeat;
-      box-shadow: 0 0 40px #a64bf4;
-    }
+.avatar {
+  background: url('AVATAR_LINK_HERE') no-repeat center/cover;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 0 40px #a64bf4;
+  z-index: 2;
+  position: relative;
+}
 
-    h1 {
-      font-size: 2.5em;
-      margin: 20px 0 10px;
-    }
+.intro {
+  position: relative;
+  margin-top: 30px;
+}
 
-    .tagline {
-      font-size: 1.2em;
-      margin-top: 5px;
-      color: #ccc;
-    }
+.intro h2 {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: white;
+}
 
-    .highlight {
-      color: #a64bf4;
-    }
+.intro h2 span {
+  color: #a64bf4;
+}
 
-    .quote {
-      font-size: 1.8em;
-      margin: 30px 0 10px;
-    }
+.main-tagline {
+  font-size: 2.8em;
+  font-weight: 600;
+  margin: 20px 0 0;
+  line-height: 1.2em;
+}
 
-    .quote .cover {
-      border: 2px solid #a64bf4;
-      padding: 2px 6px;
-      border-radius: 8px;
-      color: #a64bf4;
-    }
+.main-tagline .cover-word {
+  color: #a64bf4;
+  border: 2px solid #a64bf4;
+  padding: 0 10px;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 5px;
+}
 
-    .quote-sub {
-      font-size: 0.9em;
-      color: #aaa;
-      margin-bottom: 40px;
-    }
+.sub-text {
+  color: #bbb;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
 
-    .footer {
-      font-size: 1.5em;
-      font-weight: bold;
-    }
+.bottom-intro {
+  margin-top: 50px;
+}
 
-    .social {
-      margin-top: 10px;
-    }
+.bottom-intro h1 {
+  font-size: 2.2em;
+  margin-bottom: 10px;
+}
 
-    .social a {
-      margin: 0 10px;
-      color: #58a6ff;
-      text-decoration: none;
-    }
+.bottom-intro p {
+  font-size: 1em;
+  color: #aaa;
+}
+
+.arrow {
+  position: absolute;
+  top: 90px;
+  left: 35%;
+  transform: rotate(-20deg);
+}
+
+.arrow-text {
+  color: white;
+  font-size: 0.9em;
+  position: absolute;
+  top: -30px;
+  left: -90px;
+}
+
+.socials {
+  margin-top: 20px;
+}
+
+.socials a {
+  margin: 0 10px;
+  color: #58a6ff;
+  text-decoration: none;
+  font-size: 1em;
+}
+
   </style>
 </head>
 <body>
-  <div class="avatar"></div>
-  <h1>Hello! I Am <span class="highlight">Ayush Gupta</span></h1>
-  <p class="tagline">An aspiring <span class="highlight">Frontend Developer</span></p>
-
-  <div class="quote">
-    A Designer who <br />
-    Judges a book by its <span class="cover">cover</span>...
-  </div>
-  <div class="quote-sub">
-    Because if the cover does not impress you what else can?
-  </div>
-
-  <div class="footer">
-    I'm a Frontend Developer.<br/>
-    <span style="font-size: 0.8em;">Currently, I'm self-learning</span>
-  </div>
-
-  <div class="social">
-    <!-- Replace with your actual links -->
-    <a href="#" target="_blank">GitHub</a>
-    <a href="#" target="_blank">LinkedIn</a>
-    <a href="#" target="_blank">Instagram</a>
-  </div>
-</body>
-</html>
+  <div class="container">
+    <div class="avatar"></div>
+    <div class="arrow">
+      <svg width="100" height="50">
+        <path d="M0,50 Q50,-20 100,20" stroke="#a64bf
