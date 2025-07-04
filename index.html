@@ -3,44 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ibrahim Memon - Portfolio</title>
+  <title>MARCO - Rise of Blood</title>
+  <meta name="description" content="Official Marco Movie Theme Website - Brutal Action. Blood. Power.">
+  <meta name="author" content="Ayu / Marco Studios" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
 
   <style>
-    body {
-      font-family: 'Space Grotesk', sans-serif;
-      background: #111;
-      color: white;
+    * {
       margin: 0;
-      padding: 40px;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Anton', sans-serif;
+      background-color: #000;
+      color: #e50914;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(30, 0, 0, 0.9)),
+        url('https://i.imgur.com/4UD4MKW.jpeg') center/cover no-repeat;
+    }
+
+    h1 {
+      font-size: 5rem;
+      letter-spacing: 4px;
+      color: #ff0000;
+      text-shadow: 2px 2px 10px #810000;
+      animation: pulse 2s infinite;
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      font-family: 'Space Grotesk', sans-serif;
+      color: #f1f1f1;
     }
 
     .music-toggle {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 10px 15px;
-      background-color: #7b2cbf;
+      bottom: 30px;
+      right: 30px;
+      padding: 12px 20px;
+      background-color: #7b0000;
       color: white;
+      font-weight: bold;
+      font-size: 14px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      z-index: 1000;
+      z-index: 999;
+      transition: background 0.3s;
+    }
+
+    .music-toggle:hover {
+      background-color: #ff1e1e;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Ibrahim Memon</h1>
-  <p>Software Engineer @ Facebook</p>
-  <p>A designer who judges a book by its cover.</p>
+  <div class="container">
+    <h1>MARCO</h1>
+    <p>Rise of Blood. Brutality. Vengeance.</p>
+    <p>⚔️ The official Marco cinematic experience ⚔️</p>
+  </div>
 
   <audio id="background-music" autoplay muted loop>
     <source src="https://raw.githubusercontent.com/Ayuxhgpt/Testing/main/Marco%20Teaser%20Theme%20%20Unni%20Mukundan%20%20Shareef%20Muhammed%20%20Haneef%20Adeni%20%20Ravi%20Basrur.mp3" type="audio/mpeg">
-    Your browser does not support audio.
+    Your browser does not support the audio element.
   </audio>
 
   <button class="music-toggle" id="musicToggle">🔊 Turn Off Music</button>
@@ -58,10 +109,10 @@
       }
     }
 
-    // Try to unmute on first interaction
-    window.addEventListener('mousemove', tryUnmute, { once: true });
-    window.addEventListener('scroll', tryUnmute, { once: true });
-    window.addEventListener('click', tryUnmute, { once: true });
+    // Auto-unmute after any interaction
+    ['mousemove', 'scroll', 'click'].forEach(event => {
+      window.addEventListener(event, tryUnmute, { once: true });
+    });
 
     toggleBtn.addEventListener('click', () => {
       if (audio.paused) {
