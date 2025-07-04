@@ -1,118 +1,298 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ayush Gupta | Frontend Developer</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #14002e;
-      color: white;
-      overflow-x: hidden;
-    }.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: center;
-  position: relative;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibrahim Memon - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Resets and Body Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif; /* Using Inter as specified */
+            color: #ffffff; /* White text by default */
+            background: linear-gradient(135deg, #2b0c48 0%, #0d011a 100%); /* Dark purple/black gradient */
+            min-height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevent scrollbars if content slightly overflows */
+            box-sizing: border-box;
+        }
 
-.avatar {
-  background: url('AVATAR_LINK_HERE') no-repeat center/cover;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  box-shadow: 0 0 40px #a64bf4;
-  z-index: 2;
-  position: relative;
-}
+        .container {
+            width: 100%;
+            max-width: 1200px; /* Max width for content */
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh; /* Ensure container takes full height */
+            position: relative;
+        }
 
-.intro {
-  position: relative;
-  margin-top: 30px;
-}
+        /* Top Section Styling */
+        .top-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 50px;
+            position: relative;
+            gap: 20px;
+            flex-grow: 1; /* Allow this section to grow */
+        }
 
-.intro h2 {
-  font-size: 1.2em;
-  margin: 10px 0;
-  color: white;
-}
+        .hello-text-container {
+            position: absolute;
+            top: 50px; /* Adjusted to match image more closely */
+            left: 200px; /* Adjusted to match image more closely */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 10; /* Ensure it's above other elements */
+        }
 
-.intro h2 span {
-  color: #a64bf4;
-}
+        .hello-text {
+            font-size: 1.2em;
+            font-weight: 300;
+            color: #ffffff;
+            white-space: nowrap;
+            border-radius: 8px; /* Rounded corners */
+        }
 
-.main-tagline {
-  font-size: 2.8em;
-  font-weight: 600;
-  margin: 20px 0 0;
-  line-height: 1.2em;
-}
+        .highlight-name {
+            color: #bb86fc; /* Lighter purple for emphasis */
+            font-weight: 500;
+        }
 
-.main-tagline .cover-word {
-  color: #a64bf4;
-  border: 2px solid #a64bf4;
-  padding: 0 10px;
-  border-radius: 20px;
-  display: inline-block;
-  margin: 5px;
-}
+        .arrow {
+            position: absolute;
+            top: 30px; /* Adjust based on hello-text position */
+            left: 350px; /* Adjust to point towards the memoji */
+            width: 100px; /* Width of the arrow SVG */
+            height: 50px; /* Height of the arrow SVG */
+            transform: rotate(20deg); /* Rotate to match the image */
+            z-index: 5; /* Below hello text but above designer section */
+        }
 
-.sub-text {
-  color: #bbb;
-  font-size: 0.9em;
-  margin-top: 5px;
-}
+        .arrow svg {
+            width: 100%;
+            height: 100%;
+        }
 
-.bottom-intro {
-  margin-top: 50px;
-}
+        .designer-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-top: 150px; /* Push down to clear the hello text and arrow */
+            margin-left: 100px; /* Adjust positioning */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
 
-.bottom-intro h1 {
-  font-size: 2.2em;
-  margin-bottom: 10px;
-}
+        .memoji {
+            width: 200px; /* Adjust size as needed */
+            height: auto;
+            border-radius: 50%; /* If the image has a transparent background, this might make it look circular */
+            object-fit: cover; /* Ensure image covers the area */
+            box-shadow: 0 0 30px rgba(187, 134, 252, 0.2); /* Subtle glow */
+            border-radius: 12px; /* Rounded corners for the image container */
+        }
 
-.bottom-intro p {
-  font-size: 1em;
-  color: #aaa;
-}
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px; /* Rounded corners */
+        }
 
-.arrow {
-  position: absolute;
-  top: 90px;
-  left: 35%;
-  transform: rotate(-20deg);
-}
+        .designer-intro {
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-bottom: 5px;
+        }
 
-.arrow-text {
-  color: white;
-  font-size: 0.9em;
-  position: absolute;
-  top: -30px;
-  left: -90px;
-}
+        .designer-tagline {
+            font-size: 4em; /* Large font size */
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+            font-family: 'Inter', sans-serif; /* Using Inter for consistency */
+        }
 
-.socials {
-  margin-top: 20px;
-}
+        .highlight-cover {
+            color: #bb86fc; /* Highlight color */
+            border-bottom: 2px solid #bb86fc; /* Underline effect */
+            padding-bottom: 3px; /* Space between text and underline */
+            border-radius: 2px; /* Slight rounded corners for underline */
+        }
 
-.socials a {
-  margin: 0 10px;
-  color: #58a6ff;
-  text-decoration: none;
-  font-size: 1em;
-}
+        .designer-motto {
+            font-size: 1em;
+            font-weight: 300;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
 
-  </style>
+        /* Bottom Section Styling */
+        .bottom-section {
+            align-self: flex-start; /* Align to the left */
+            margin-bottom: 50px; /* Space from the bottom */
+            margin-left: 100px; /* Align with the designer section */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        .engineer-title {
+            font-size: 3em; /* Large font size */
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block; /* To make the blinking cursor work correctly */
+        }
+
+        .blinking-cursor {
+            font-weight: 400;
+            animation: blink-caret .75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ffffff; }
+        }
+
+        .engineer-detail {
+            font-size: 1.2em;
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .facebook-logo {
+            height: 1.2em; /* Adjust size to align with text */
+            width: auto;
+            vertical-align: middle; /* Align with text baseline */
+            border-radius: 4px; /* Rounded corners for the logo */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hello-text-container {
+                left: 100px;
+            }
+            .arrow {
+                left: 250px;
+            }
+            .designer-section, .bottom-section {
+                margin-left: 50px;
+            }
+            .designer-tagline {
+                font-size: 3.5em;
+            }
+            .engineer-title {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .top-section {
+                align-items: center;
+                padding-top: 20px;
+            }
+            .hello-text-container {
+                position: static; /* Reset positioning for smaller screens */
+                margin-bottom: 20px;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .arrow {
+                position: static;
+                transform: none;
+                margin-top: 10px;
+                width: 80px;
+                height: 40px;
+            }
+            .designer-section {
+                flex-direction: column;
+                text-align: center;
+                margin-top: 50px;
+                margin-left: 0;
+                gap: 20px;
+            }
+            .memoji {
+                width: 150px;
+            }
+            .designer-tagline {
+                font-size: 2.5em;
+            }
+            .designer-motto {
+                font-size: 0.9em;
+            }
+            .bottom-section {
+                align-self: center;
+                text-align: center;
+                margin-left: 0;
+                margin-top: 40px; /* Add some space from the top section */
+            }
+            .engineer-title {
+                font-size: 2em;
+            }
+            .engineer-detail {
+                font-size: 1em;
+                flex-direction: column; /* Stack logo and text if needed */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .designer-tagline {
+                font-size: 2em;
+            }
+            .engineer-title {
+                font-size: 1.5em;
+            }
+            .hello-text {
+                font-size: 1em;
+            }
+            .designer-intro, .engineer-detail {
+                font-size: 0.9em;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="avatar"></div>
-    <div class="arrow">
-      <svg width="100" height="50">
-        <path d="M0,50 Q50,-20 100,20" stroke="#a64bf
+    <div class="container">
+        <div class="top-section">
+            <div class="hello-text-container">
+                <p class="hello-text">Hello! I Am <span class="highlight-name">Ibrahim Memon</span></p>
+                <div class="arrow">
+                    <!-- SVG for the arrow to ensure exact curve -->
+                    <svg viewBox="0 0 100 50" preserveAspectRatio="none">
+                        <path d="M5 45 C 20 5, 80 5, 95 45" stroke="#FFFFFF" fill="none" stroke-width="2"/>
+                        <polygon points="95,45 89,42 92,45 89,48" fill="#FFFFFF" /> <!-- Arrowhead -->
+                    </svg>
+                </div>
+            </div>
+            <div class="designer-section">
+                <!-- Placeholder for Memoji image -->
+                <img src="https://placehold.co/200x200/553c9a/ffffff?text=Memoji" alt="Ibrahim Memon Memoji with Laptop" class="memoji" onerror="this.onerror=null;this.src='https://placehold.co/200x200/553c9a/ffffff?text=Memoji';">
+                <div class="text-content">
+                    <p class="designer-intro">A Designer who</p>
+                    <h1 class="designer-tagline">Judges a book by its <span class="highlight-cover">cover...</span></h1>
+                    <p class="designer-motto">Because if the cover does not impress you what else can?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <h2 class="engineer-title">I'm a Software Engineer.<span class="blinking-cursor">|</span></h2>
+            <p class="engineer-detail">Currently, I'm a Software Engineer at <!-- Placeholder for Facebook logo -->
+                <img src="https://placehold.co/24x24/1877F2/ffffff?text=FB" alt="Facebook Logo" class="facebook-logo" onerror="this.onerror=null;this.src='https://placehold.co/24x24/1877F2/ffffff?text=FB';"> Facebook,</p>
+        </div>
+    </div>
+</body>
+</html>
+
