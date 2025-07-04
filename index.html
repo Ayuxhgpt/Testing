@@ -36,7 +36,8 @@
 
         /* Hero section background with parallax effect */
         .hero-background {
-            background-image: url('https://placehold.co/1920x1080/1a202c/e2e8f0?text=MARCO+Background'); /* Placeholder image */
+            /* Using a high-resolution, action-oriented background related to the movie theme */
+            background-image: url('https://i.pinimg.com/originals/e8/1a/10/e81a100a0e98c9f22c1b1c6b1a20b0b0.jpg'); /* Example high-res image, replace if needed */
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* Parallax effect */
@@ -72,6 +73,19 @@
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
             background-color: #dc2626; /* Darker red on hover */
         }
+
+        /* Download button specific styling */
+        .btn-download {
+            background-color: #22c55e; /* Green */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            background-color: #16a34a; /* Darker green on hover */
+        }
+
 
         /* Trailer iframe responsiveness */
         .video-container {
@@ -156,7 +170,7 @@
         <div class="modal-content">
             <span class="close-button" onclick="closeModal()">&times;</span>
             <h3 class="text-2xl font-bold mb-4 text-red-500">Coming Soon!</h3>
-            <p class="text-lg">The movie links and download options will be available here shortly. Stay tuned for more updates!</p>
+            <p class="text-lg">This download link will be available here shortly. Stay tuned for more updates!</p>
             <button class="mt-6 bg-red-600 text-white py-2 px-6 rounded-lg font-semibold hover:bg-red-700 transition duration-300" onclick="closeModal()">Got It!</button>
         </div>
     </div>
@@ -172,6 +186,7 @@
                 <li><a href="#trailers" class="text-gray-300 hover:text-red-500 transition duration-300 px-3 py-2 rounded-md">Trailers</a></li>
                 <li><a href="#music" class="text-gray-300 hover:text-red-500 transition duration-300 px-3 py-2 rounded-md">Music</a></li>
                 <li><a href="#action" class="text-gray-300 hover:text-red-500 transition duration-300 px-3 py-2 rounded-md">Action</a></li>
+                <li><a href="#download" class="text-gray-300 hover:text-red-500 transition duration-300 px-3 py-2 rounded-md">Download</a></li>
             </ul>
         </nav>
     </header>
@@ -217,35 +232,45 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Unni Mukundan -->
                 <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 transform hover:scale-105 transition duration-300">
-                    <img src="https://placehold.co/200x200/4a5568/e2e8f0?text=Unni+Mukundan" alt="Unni Mukundan" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNzQ3M2Q0ZTItY2Y3MC00N2Q0LWJmYjAtZTA3Y2QyM2Q2YmY1XkEyXkFqcGdeQXVyMTI4NTAxOTQ3._V1_.jpg"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/4a5568/e2e8f0?text=Unni+Mukundan';"
+                         alt="Unni Mukundan" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
                     <h3 class="text-2xl font-bold text-white mb-2">Unni Mukundan</h3>
                     <p class="text-red-400 text-lg">Marco</p>
                     <p class="text-gray-400 mt-2">Portrays the titular character, a ruthless gangster on a path of vengeance.</p>
                 </div>
                 <!-- Yukti Thareja -->
                 <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 transform hover:scale-105 transition duration-300">
-                    <img src="https://placehold.co/200x200/4a5568/e2e8f0?text=Yukti+Thareja" alt="Yukti Thareja" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+                    <img src="https://m.timesofindia.com/photo/96813184/96813184.jpg"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/4a5568/e2e8f0?text=Yukti+Thareja';"
+                         alt="Yukti Thareja" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
                     <h3 class="text-2xl font-bold text-white mb-2">Yukti Thareja</h3>
                     <p class="text-red-400 text-lg">Supporting Role</p>
                     <p class="text-gray-400 mt-2">Key supporting actress in the high-stakes narrative.</p>
                 </div>
                 <!-- Kabir Duhan Singh -->
                 <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 transform hover:scale-105 transition duration-300">
-                    <img src="https://placehold.co/200x200/4a5568/e2e8f0?text=Kabir+Duhan+Singh" alt="Kabir Duhan Singh" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
-                    <h3 class="text-2xl font-bold text-white mb-2">Kabir Duhan Singh</h3>
+                    <img src="https://i.ytimg.com/vi/iVTjaizS7O0/maxresdefault.jpg"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/4a5568/e2e8f0?text=Kabir+Duhan+Singh';"
+                         alt="Kabir Duhan Singh" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+                    <h3 class="2xl font-bold text-white mb-2">Kabir Duhan Singh</h3>
                     <p class="text-red-400 text-lg">Supporting Role</p>
                     <p class="text-gray-400 mt-2">Contributes to the intense confrontations within the film.</p>
                 </div>
                 <!-- Haneef Adeni (Director) -->
                 <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 transform hover:scale-105 transition duration-300">
-                    <img src="https://placehold.co/200x200/4a5568/e2e8f0?text=Haneef+Adeni" alt="Haneef Adeni" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+                    <img src="https://m.timesofindia.com/photo/64585352/64585352.jpg"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/4a5568/e2e8f0?text=Haneef+Adeni';"
+                         alt="Haneef Adeni" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
                     <h3 class="text-2xl font-bold text-white mb-2">Haneef Adeni</h3>
                     <p class="text-red-400 text-lg">Director</p>
                     <p class="text-gray-400 mt-2">The visionary behind the film's gritty narrative and brutal action sequences.</p>
                 </div>
                 <!-- Shareef Muhammed (Producer) -->
                 <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 transform hover:scale-105 transition duration-300">
-                    <img src="https://placehold.co/200x200/4a5568/e2e8f0?text=Shareef+Muhammed" alt="Shareef Muhammed" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
+                    <img src="https://www.shutterstock.com/image-photo/shareef-muhammed-260nw-2178229871.jpg"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/4a5568/e2e8f0?text=Shareef+Muhammed';"
+                         alt="Shareef Muhammed" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
                     <h3 class="text-2xl font-bold text-white mb-2">Shareef Muhammed</h3>
                     <p class="text-red-400 text-lg">Producer</p>
                     <p class="text-gray-400 mt-2">The producer who brought the intense world of MARCO to life.</p>
@@ -318,27 +343,80 @@
                     Prepare for a cinematic experience where every punch, every cut, and every explosion is felt. A standout sequence, reminiscent of the iconic corridor fight from Old Boy, showcases Marco's relentless pursuit of justice through a gauntlet of adversaries. This is not just action; it's a brutal ballet of vengeance.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-                    <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Brutal+Action+Scene+1" alt="Brutal Action Scene 1" class="rounded-lg shadow-md w-full h-auto object-cover transform hover:scale-105 transition duration-300">
-                    <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Brutal+Action+Scene+2" alt="Brutal Action Scene 2" class="rounded-lg shadow-md w-full h-auto object-cover transform hover:scale-105 transition duration-300">
+                    <!-- Placeholder images replaced with more relevant ones if found, or kept generic -->
+                    <img src="https://i.ytimg.com/vi/VOzWJQ7zGU8/maxresdefault.jpg"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/2d3748/e2e8f0?text=Brutal+Action+Scene+1';"
+                         alt="Brutal Action Scene 1" class="rounded-lg shadow-md w-full h-auto object-cover transform hover:scale-105 transition duration-300">
+                    <img src="https://i.ytimg.com/vi/514eLasC7iA/maxresdefault.jpg"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/2d3748/e2e8f0?text=Brutal+Action+Scene+2';"
+                         alt="Brutal Action Scene 2" class="rounded-lg shadow-md w-full h-auto object-cover transform hover:scale-105 transition duration-300">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action for Movie Links -->
-    <section id="watch-now" class="py-16 sm:py-24 bg-gray-900 text-center fade-in-section">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl sm:text-5xl font-bold mb-8 text-red-500">Don't Just Watch. Experience.</h2>
-            <p class="text-xl sm:text-2xl text-gray-300 mb-10">
-                Be among the first to witness the epic saga of MARCO.
+    <!-- Download Section -->
+    <section id="download" class="py-16 sm:py-24 bg-gray-900 fade-in-section">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-12 text-red-500">Download MARCO</h2>
+            <p class="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Choose your preferred quality and resolution to download "MARCO" and experience the action offline.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                <button onclick="showModal()" class="bg-red-600 text-white py-3 px-8 rounded-lg font-bold text-xl uppercase btn-primary shadow-lg hover:shadow-xl w-full sm:w-auto">
-                    Watch Now
-                </button>
-                <button onclick="showModal()" class="bg-gray-700 text-white py-3 px-8 rounded-lg font-bold text-xl uppercase btn-primary shadow-lg hover:shadow-xl w-full sm:w-auto">
-                    Download Movie
-                </button>
+            <div class="max-w-xl mx-auto space-y-6">
+                <!-- Download Option 1 -->
+                <div class="bg-gray-800 p-4 rounded-lg shadow-xl border border-gray-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <span class="text-lg sm:text-xl font-semibold text-white text-left flex-grow">
+                        Marco (2024) {Hindi + Malayalam} WEB-DL 480p x264 <span class="text-red-400">[530MB]</span>
+                    </span>
+                    <button onclick="showModal()" class="btn-download text-white py-2 px-6 rounded-lg font-semibold w-full sm:w-auto">
+                        DOWNLOAD NOW
+                    </button>
+                </div>
+                <!-- Download Option 2 -->
+                <div class="bg-gray-800 p-4 rounded-lg shadow-xl border border-gray-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <span class="text-lg sm:text-xl font-semibold text-white text-left flex-grow">
+                        Marco (2024) {Hindi DD5.1 + Malayalam} WEB-DL 720p HEVC x265 <span class="text-red-400">[900MB]</span>
+                    </span>
+                    <button onclick="showModal()" class="btn-download text-white py-2 px-6 rounded-lg font-semibold w-full sm:w-auto">
+                        DOWNLOAD NOW
+                    </button>
+                </div>
+                <!-- Download Option 3 -->
+                <div class="bg-gray-800 p-4 rounded-lg shadow-xl border border-gray-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <span class="text-lg sm:text-xl font-semibold text-white text-left flex-grow">
+                        Marco (2024) {Hindi DD5.1 + Malayalam} WEB-DL 720p x264 <span class="text-red-400">[1.3GB]</span>
+                    </span>
+                    <button onclick="showModal()" class="btn-download text-white py-2 px-6 rounded-lg font-semibold w-full sm:w-auto">
+                        DOWNLOAD NOW
+                    </button>
+                </div>
+                <!-- Download Option 4 -->
+                <div class="bg-gray-800 p-4 rounded-lg shadow-xl border border-gray-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <span class="text-lg sm:text-xl font-semibold text-white text-left flex-grow">
+                        Marco (2024) {Hindi DD5.1 + Malayalam} WEB-DL 1080p HEVC x265 <span class="text-red-400">[2GB]</span>
+                    </span>
+                    <button onclick="showModal()" class="btn-download text-white py-2 px-6 rounded-lg font-semibold w-full sm:w-auto">
+                        DOWNLOAD NOW
+                    </button>
+                </div>
+                <!-- Download Option 5 (Updated with provided link) -->
+                <div class="bg-gray-800 p-4 rounded-lg shadow-xl border border-gray-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <span class="text-lg sm:text-xl font-semibold text-white text-left flex-grow">
+                        Marco (2024) {Hindi DD5.1 + Malayalam} WEB-DL 1080p x264 <span class="text-red-400">[2.9GB]</span>
+                    </span>
+                    <a href="https://vcloud.lol/4vhgg9bh8vxiw4h" target="_blank" rel="noopener noreferrer" class="btn-download text-white py-2 px-6 rounded-lg font-semibold w-full sm:w-auto text-center">
+                        DOWNLOAD NOW
+                    </a>
+                </div>
+                <!-- Download Option 6 -->
+                <div class="bg-gray-800 p-4 rounded-lg shadow-xl border border-gray-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <span class="text-lg sm:text-xl font-semibold text-white text-left flex-grow">
+                        Marco (2024) {Hindi DD5.1 + Malayalam} WEB-DL 2160p HEVC x265 <span class="text-red-400">[6.7GB]</span>
+                    </span>
+                    <button onclick="showModal()" class="btn-download text-white py-2 px-6 rounded-lg font-semibold w-full sm:w-auto">
+                        DOWNLOAD NOW
+                    </button>
+                </div>
             </div>
         </div>
     </section>
